@@ -8,7 +8,7 @@ book:
     - index.qmd
     - intro.qmd
     - introR.qmd
-    - summary.qmd
+    - vectores.qmd
     - references.qmd
 
 bibliography: references.bib

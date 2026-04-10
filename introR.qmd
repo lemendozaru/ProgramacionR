@@ -1,0 +1,83 @@
+# Introducción a R
+
+## Comentarios
+
+R utiliza `#` para agregar comentarios, por lo que cada línea que comience con este símbolo no será ejecutada por R. Por ejemplo, en la consola escribimos `3 + 4` y ejecutamos si presionamos {{<kbd Intro>}}:
+
+```{r}
+# Calcula 3 + 4
+3 + 4
+```
+
+## Aritmética
+
+R puede utilizarse como una calculadora. Los operadores son los básicos: `+` para la suma; `-` para la resta; `*` para multiplicar y `/` para dividir. Para la potencia se utiliza el circunflejo `^` y para el módulo un par de porcientos: `%%`. Estos últimos dos se utilizan en R así:
+
+```{r}
+# Calcular 2 a la quinta potencia
+2^5
+
+# Calcular el residuo de dividir 28 entre 6
+28 %% 6
+```
+
+## Variables
+
+Un concepto básico de la programación se llama **variable**. Esta permite almacenar un valor o un objeto para utilizarse después mediante su nombre. La asignación de variables en R se consigue con:
+
+```{r}
+# Creamos una variable que valga 5
+variable <- 5
+```
+
+Y para recuperar una variable, basta con escribir su nombre en R y ejecutar:
+
+```{r}
+# Imprimimos el valor de la variable
+variable
+```
+
+Es posible realizar operaciones con las variables y asignar el resultado a otra de ellas. Por ejemplo:
+
+```{r}
+# Contamos las naranjas
+naranjas <- 6
+
+# Contamos las manzanas
+manzanas <- 3
+
+# Contamos las frutas en total
+frutas <- naranjas + manzanas
+
+# Imprimimos la cantidad
+frutas
+```
+
+## Tipos de datos básicos
+
+Son:
+
+- Decimales como `3.8`, llamados **numéricos**.
+- Enteros como `6`, llamados **enteros**.
+- Booleanos como `TRUE` o `FALSE`, llamados **lógicos**.
+- Texto o cadenas como "textual", llamados **caracteres**, los cuales deben escribirse entre comillas.
+
+Podemos conocer el tipo de dato de una variable con la sentencia `class()`:
+
+```{r}
+# Declareamos variables de diferentes tipos
+numerico <- 42
+caracter <- "universo"
+logico <- FALSE
+
+# Clase de "numerico"
+class(numerico)
+
+# Clase de "caracter"
+class(caracter)
+
+# Clase de "logico"
+class(logico)
+```
+
+

@@ -6,10 +6,10 @@ Son básicamente apuntes personales hechos con la mera intención de tener una r
 
 ## Instalación de R en ArchLinux y sus derivadas
 
-Debe instalarse el paquete `r`, además de `gcc-fortran` y `make` para compilar dependencias.
+Debe instalarse el paquete `r`, además de `gcc-fortran`, `make` y `libuv` para compilar dependencias.
 
 ```bash
-sudo pacman -S r gcc-fortran make
+sudo pacman -S r gcc-fortran make libuv
 ```
 
 También existe un error en Arch, que consiste en una mala instalación del paquete `stringi`. Toca volver a instalarle con
@@ -18,4 +18,9 @@ También existe un error en Arch, que consiste en una mala instalación del paqu
 install.packages("stringi")
 ```
 
-Otros paquetes que también deberían instalarse para poder crear documentos y presentaciones en Quarto son `RMarkdoqwn` y `knitr`.
+Otros paquetes que también deberían instalarse para poder crear documentos y presentaciones en Quarto son `rmarkdown` y `knitr`.
+
+```r
+install.packages(c("rmarkdown", "knitr"))
+```
+
