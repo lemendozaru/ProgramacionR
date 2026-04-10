@@ -1,5 +1,21 @@
-# Introduction
+# Introducción
 
-This is a book created from markdown and executable code.
+Simple libro de apuntes generales sobre la programación con R.
 
-See @knuth84 for additional discussion of literate programming.
+Son básicamente apuntes personales hechos con la mera intención de tener una referencia.
+
+## Instalación de R en ArchLinux y sus derivadas
+
+Debe instalarse el paquete `r`, además de `gcc-fortran` y `make` para compilar dependencias.
+
+```bash
+sudo pacman -S r gcc-fortran make
+```
+
+También existe un error en Arch, que consiste en una mala instalación del paquete `stringi`. Toca volver a instalarle con
+
+```r
+install.packages("stringi")
+```
+
+Otros paquetes que también deberían instalarse para poder crear documentos y presentaciones en Quarto son `RMarkdoqwn` y `knitr`.
