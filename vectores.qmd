@@ -1,1 +1,138 @@
 # Vectores
+
+Son matrices unidimensionales que pueden contener datos numéricos, textuales o lógicos, por lo que son una herramienta sencilla para almacenar datos en R.
+
+## Creando un vector
+
+Para ello se utiliza la función de combinar `c()`, con sus elementos separados por comas. Veamos cómo crear un par de vectores numéricos en los que iremos registrando nuestras ganancias en una semana de juerga en los casinos:
+
+```{r}
+# Ganancias en el póker
+poker <- c(140, -50, 20, -120, 240)
+
+# Ganancias en la ruleta
+ruleta <- c(-24, -50, 100, -350, 10)
+```
+
+## Nombrando los elementos del vector
+
+En R es posible asignar un nombre a los distintos datos contenidos en un vector. Para ello nos valemos de otro vector en el que almacenaremos dichos nombres en conjunto, pero ordenados.
+
+Primero creamos el vector con los días:
+
+```{r}
+# Nombres de los días
+dias <- c("Lunes", "Martes", "Miércoles", "Jueves", "Viernes")
+```
+
+Y luego los asignamos a su correspondiente ganancia con la función `names()`:
+
+```{r}
+# Nombrando las ganancias del póker
+names(poker) <- dias
+
+# Nombrando las ganancias de la ruleta
+names(ruleta) <- dias
+```
+
+```{r}
+# Imprimimos para corroborar
+poker
+```
+
+## Operaciones
+
+Necesitamos saber cuánto hemos ganado cada día, lo cual hacemos realizando la suma de ambos vectores:
+
+```{r}
+# Sumando ambos resultados
+total <- poker + ruleta
+
+# Imprimiendo
+total
+```
+
+Parece que no nos ha ido demasiado bien. Veamos cómo nos hemos comportado en cada juego y luego en general. La función `sum()` nos permite calcular el total de los elementos de un vector.
+
+```{r}
+# Total en póker
+sum(poker)
+
+# Total en ruleta
+sum(ruleta)
+
+# Total global
+sum(total)
+```
+
+Vaya. Parece que no somos tan buenos en la ruleta. Como nos negamos a aceptarlo, le preguntamos a R, ¿hemos ganado más en el póker que en la ruleta?
+
+```{r}
+# Preguntamos si ganamos más en el póker que en ruleta
+sum(poker) > sum(ruleta)
+```
+
+## Selección de elementos
+
+Ya confirmamos que somos mejores en el póker. Deberíamos enfocarnos ahí. Pero queda la duda, ¿nos estará yendo mejor al principio de la semana? ¿y qué tal los miércoles? Preguntemos por el miércoles en el póker. Para ello requeriremos pedirle a R el valor almacenado en el tercer día, lo cual en vectores (y matrices también) se realiza por medio de corchetes:
+
+```{r}
+# Queremos el tercer elemento
+poker[3]
+```
+
+Ganamos un poco. Vamos a ampliar nuestra selección a tres días entre semana, desde el martes hasta el jueves:
+
+```{r}
+# Queremos los días 2, 3 y 4
+poker[2:4]
+```
+
+Los rangos de elementos en un vector se especifican mediante `:`, y no olvidemos que R comienza a contar desde `1`, no desde el `0` como otros lenguajes de programación.
+
+También es posible seleccionar los elementos de un vector escribiendo su nombre si lo conocemos:
+
+```{r}
+# Seleccionamos por el nombre
+poker["Miércoles"]
+```
+
+Ahora veamos cómo nos fue los últimos tres días en la ruleta:
+
+```{r}
+# Queremos los días 3, 4 y 5
+ruleta[3:5]
+```
+## Operadores de comparación
+
+Nos damos cuenta que si deseamos conocer el valor de cualquier elemento, lo buscamos y ya. Pero, ¿y si queremos que R nos diga de una vez cuáles días ganamos? Podemos hacerlo usando operadores de comparación.
+
+R cuenta con los siguientes:
+
+- `<`, menor que.
+- `>`, mayor que.
+- `<=`, menor o igual que.
+- `>=`, mayor o igual que.
+- `==`, igual que.
+- `!=`, diferente a.
+
+Así que si le preguntamos a R en cuáles días ganamos dinero, nos dirá si es cierto que ganamos o no:
+
+```{r}
+# ¿Es cierto que ganamos en póker?
+poker > 0
+```
+
+Pero si realmente queremos saber en cuáles días ganamos, basta con poner la condición entre corchetes:
+
+```{r}
+# ¿Qué días ganamos en póker?
+poker[poker > 0]
+```
+
+Preguntemos ahora por los días buenos en la ruleta:
+
+```{r}
+# ¿Qué días fueron buenos en la ruleta?
+ruleta[ruleta > 0]
+```

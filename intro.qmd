@@ -1,8 +1,6 @@
 # Introducción
 
-Simple libro de apuntes generales sobre la programación con R.
-
-Son básicamente apuntes personales hechos con la mera intención de tener una referencia.
+Simple libro de apuntes generales sobre la programación con R. Son básicamente apuntes personales hechos con la mera intención de tener una referencia.
 
 ## Instalación de R en ArchLinux y sus derivadas
 

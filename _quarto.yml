@@ -9,6 +9,7 @@ book:
     - intro.qmd
     - introR.qmd
     - vectores.qmd
+    - matrices.qmd
     - references.qmd
 
 bibliography: references.bib
