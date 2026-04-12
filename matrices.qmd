@@ -1,1 +1,183 @@
 # Matrices
+
+Son una colección de elementos del mismo tipo de datos dispuestos en un número fijo de filas y columnas. Es un arreglo bidimensional.
+
+Una matriz se construye con la función `matrix()`, la cual contiene varios argumentos. Veamos el ejemplo de una matriz que contiene los números del 1 al 9, rellenándose por fila en un total de tres filas.
+
+```{r}
+matrix(1:9, byrow = T, nrow = 3)
+```
+Veamos que R rellena por fila hasta completar las tres. Además, en la salida nos indica cómo "apuntar" a cada elemento.
+
+## Creando matrices
+
+Vamos a crear una matriz a partir de tres vectores que también crearemos. Estos vectores contienen los datos de la taquilla de tres películas de la franquicia "Star Wars".
+
+```{r}
+# Vectores con la taquilla de las películas
+new_hope <- c(460.998, 314.4)
+empire_strikes <- c(290.475, 247.9)
+return_jedi <- c(309.306, 165.8)
+
+# Matriz a partir de los vectores
+matriz_star_wars <-
+    matrix(c(new_hope, empire_strikes, return_jedi), byrow = T, nrow = 3)
+
+# Imprimimos la matriz
+matriz_star_wars
+```
+
+## Nombrando elementos
+
+Al igual que con los vectores, es posible nombrar los elementos de una matriz, tanto sus filas como sus columnas. Esto se consigue creando primero los vectores de nombre y asignádolos con la función correspondiente:
+
+```{r}
+# Nombres de columna
+colnames(matriz_star_wars) <- c("US", "non-US")
+
+# Nombres de fila
+rownames(matriz_star_wars) <-
+    c("A New Hope", "The Empire Strikes Back", "Return of the Jedi")
+```
+
+Veamos cómo quedó nuestra matriz:
+
+```{r}
+matriz_star_wars
+```
+
+## Modificando matrices
+
+### Sumando sus filas
+
+Calcularemos los ingresos totales de las tres películas y los guardaremos en un vector llamado `total_mundial`:
+
+```{r}
+# Suma por fila
+total_mundial <- rowSums(matriz_star_wars)
+# Impresión del resultado
+total_mundial
+```
+
+### Añadiendo columnas
+
+Vamos a incluir el vector anterior como una columna nueva. Eso se consigue con la función `cbind()`:
+
+```{r}
+# Agregamos la nueva columna
+taquilla_star_wars <- cbind(matriz_star_wars, total_mundial)
+# Mostramos el resultado
+taquilla_star_wars
+```
+
+### Añadiendo filas
+
+Crearemos otra matriz con la taquilla de las precuelas para unirla a la original.
+
+```{r}
+# Vectores iniciales
+phantom_menace <- c(474.5, 552.5)
+attack_clones <- c(310.7, 338.7)
+revenge_sith <- c(380.3, 468.5)
+
+# Matriz correspondiente
+matriz_precuelas <-
+    matrix(c(phantom_menace, attack_clones, revenge_sith),
+        byrow = T, nrow = 3)
+
+# Agregamos los títulos de fila
+rownames(matriz_precuelas) <-
+    c("The Phantom Menace", "Attack of the Clones", "Revenge of the Sith")
+
+# Incluimos la columna con el total mundial
+taquilla_precuelas <- cbind(matriz_precuelas, rowSums(matriz_precuelas))
+
+# Agregamos los títulos de columna
+colnames(taquilla_precuelas) <- c("US", "non-US", "total_mundial")
+
+# Imprimimos la nueva matriz
+taquilla_precuelas
+```
+
+Enseguida unimos ambas matrices para contar con la taquilla de toda la saga:
+
+```{r}
+taquilla_saga <- rbind(taquilla_star_wars, taquilla_precuelas)
+taquilla_saga
+```
+
+Añadamos la suma de todas las taquillas para obtener el total en una nueva fila que uniremos a la matriz general:
+
+```{r}
+# Vector en el que guardamos la suma
+total <- colSums(taquilla_saga)
+# Unimos
+total_taquilla_saga <- rbind(taquilla_saga, total)
+# Imprimimos
+total_taquilla_saga
+```
+
+## Seleccionando elementos
+
+Al igual que con los vectores, se utilizan corchetes, con la salvedad de que debemos considerar las dos dimensiones.
+
+Seleccionemos e imprimamos solo la taquilla fuera de Estados Unidos:
+
+```{r}
+taquilla_non_US <- taquilla_saga[, 2]
+taquilla_non_US
+```
+
+Calculemos su media:
+
+```{r}
+mean(taquilla_non_US)
+```
+
+Ahora, como un ejercicio de análisis, calculemos la media de la primera trilogía y la de las precuelas. Veamos cómo evolucionó:
+
+```{r}
+taquilla_trilogia_original <- taquilla_saga[1:3, 2]
+taquilla_trilogia_precuelas <- taquilla_saga[4:6, 2]
+mean(taquilla_trilogia_original)
+mean(taquilla_trilogia_precuelas)
+```
+
+Parece que en promedio, las precuelas vendieron más.
+
+## Aritmética ligera
+
+Supongamos que nos encargan calcular cuántas personas asistieron a ver las películas. Para ello nos valdremos de otra suposición: el boleto costaba 5 dólares en promedio. Calculemos:
+
+```{r}
+# Calculemos el número de asistentes
+asistentes <- taquilla_saga / 5
+asistentes
+```
+
+Resulta que nos han regañado porque asumimos el precio de los boletos para todas las películas por igual. Nos han dado la matriz con los precios reales (tampoco lo son, pero finjamos que sí) y nos piden que volvamos a calcular el número de espectadores con los datos adecuados. Recordemos que existen dos tipos de multiplicación en vectores y matrices. Vamos a quedarnos con la sencilla, la escalar. Hagamos las operaciones, pero primero veamos la matriz de precios:
+
+```{r}
+matriz_precios <-
+    matrix(c(5,5,5,6,6,6,7,7,7,4,4,4,4.5,4.5,4.5,4.9,4.9,4.9),
+        byrow = T, nrow = 6)
+matriz_precios
+```
+
+Realicemos el cálculo correcto:
+
+```{r}
+espectadores_reales <- taquilla_saga / matriz_precios
+espectadores_reales
+```
+
+Para finalizar nuestro análisis nos piden que calculemos la media de espectadores dentro y fuera de los Estados Unidos.
+
+```{r}
+# Promedio de espectadores en Estados Unidos
+media_espectadores_US <- mean(espectadores_reales[,1])
+media_espectadores_US
+# Promedio de asistentes fuera de Estados Unidos
+media_espectadores_non_US <- mean(espectadores_reales[,2])
+media_espectadores_non_US
+```

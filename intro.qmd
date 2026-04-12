@@ -10,13 +10,13 @@ Debe instalarse el paquete `r`, además de `gcc-fortran`, `make` y `libuv` para 
 sudo pacman -S r gcc-fortran make libuv
 ```
 
-También existe un error en Arch, que consiste en una mala instalación del paquete `stringi`. Toca volver a instalarle con
+También existe un error en Arch, que consiste en una mala instalación del paquete `stringi`. Toca volver a instalarle dentro de R con
 
 ```r
 install.packages("stringi")
 ```
 
-Otros paquetes que también deberían instalarse para poder crear documentos y presentaciones en Quarto son `rmarkdown` y `knitr`.
+Otros paquetes que también deberían instalarse para poder crear documentos y presentaciones en Quarto son `rmarkdown` y `knitr`, también dentro de R.
 
 ```r
 install.packages(c("rmarkdown", "knitr"))

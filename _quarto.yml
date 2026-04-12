@@ -10,6 +10,7 @@ book:
     - introR.qmd
     - vectores.qmd
     - matrices.qmd
+    - factores.qmd
     - references.qmd
 
 bibliography: references.bib
