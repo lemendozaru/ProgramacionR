@@ -2,6 +2,10 @@
 
 Son muy útiles para almacenar datos de varios tipos, ya sea textuales, numéricos o lógicos, por ejemplo. Contiene las variables como columnas y las observaciones como filas.
 
+Echemos un vistazo a cómo aparecen los marcos en R:
+
 ```{r}
+# Cargamos un marco preexistente en R
 mtcars
 ```
+
