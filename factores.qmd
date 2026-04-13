@@ -1,1 +1,80 @@
 # Factores
+
+Son tipos de datos estadísticos utilizados para almacenar variables categóricas. Es importante decirle a R que lo que estamos manipulando son categorías, ya que de eso depende el tipo de herramientas que estaremos utilizando.
+
+Un buen ejemplo de variable categórica es el sexo. En ocasiones podemos limitarlo a dos: "Masculino" y "Femenino". En otras ocasiones requeriremos más categorías pero de momento solo manejaremos esas.
+
+## Generando vectores de factores
+
+Podemos partir de un vector de datos ya existente (también podemos recabar la información directamente como factores). Por ejemplo, una encuesta pregunta por el sexo y ofrece las opciones de "F" para el femenino y "M" para el masculino.
+
+```{r}
+# Vector original
+datos_sexo = c("M", "F", "F", "M", "M")
+# Vector convertido a factor
+f_datos_sexo = factor(datos_sexo)
+
+# Mostramos el factor
+f_datos_sexo
+```
+
+Podemos notar que los vectores de factor muestran sus elementos y sus niveles o categorías. Cabe recordar que las variables categóricas se dividen en dos clasificaciones: las nominales y las ordinales. Las segundas tienen un orden natural, como por ejemplo en una escala de temperaturas, "Media" está por debajo de "Alta", pero arriba de "Baja". Este es un caso de variable categórica ordinal. El anterior caso del sexo es una variable categórica nominal.
+
+## Factores ordinales
+
+R necesita saber que nosotros estamos trabajando con un orden en nuestro factor. Eso se indica como sigue:
+
+```{r}
+# Escala categórica de temperaturas
+temperaturas = c("Alta", "Baja", "Alta", "Baja", "Media")
+# Convertimos a factor
+f_temperaturas =
+    factor(temperaturas, order = T,
+        levels = c("Baja", "Media", "Alta"))
+# Imprimimos
+f_temperaturas
+```
+
+## Cambiando el nombre a los niveles
+
+Puede darse el caso de que nuestro factor contenga niveles poco claros o que simplemente queramos cambiarlos. Esto se consigue sobre el vector factorizado. Como ejemplo, carguemos el de los datos sobre el sexo.
+
+```{r}
+# Consideremos el factor del sexo
+f_datos_sexo
+```
+
+Cabe mencionar que R siempre considera el orden alfabético como primer criterio de ordenamiento. Viendo que los niveles mostrados son indicados como "F" primero y "M" en segundo lugar, respetemos dicho orden al reasignar.
+
+```{r}
+levels(f_datos_sexo) = c("Femenino", "Masculino")
+f_datos_sexo
+```
+
+## Resumiendo factores
+
+Una vez que tengamos nuestros datos factorizados podemos resumirlos para extraer información. Usemos `summary()`:
+
+```{r}
+summary(f_datos_sexo)
+```
+
+## Comparando factores
+
+Al ser factores nominales, en el caso del vector de los datos sobre el sexo, no tiene sentido utilizar operadores de comparación con sus datos. R arroja un `NA` si intentamos hacerlo.
+
+```{r}
+f_datos_sexo[1] > f_datos_sexo[2]
+```
+
+Pero con un factor ordinal sí vale la pena. Veamos qué pasa si los comparamos:
+
+```{r}
+# Temperatura media con respecto a una alta
+f_temperaturas[5] > f_temperaturas[1]
+# Temperatura media con respecto a una baja
+f_temperaturas[5] > f_temperaturas[2]
+```
+
+
+

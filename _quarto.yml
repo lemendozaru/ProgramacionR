@@ -11,6 +11,7 @@ book:
     - vectores.qmd
     - matrices.qmd
     - factores.qmd
+    - marcos.qmd
     - references.qmd
 
 bibliography: references.bib

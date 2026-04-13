@@ -1,0 +1,7 @@
+# Marcos de datos
+
+Son muy útiles para almacenar datos de varios tipos, ya sea textuales, numéricos o lógicos, por ejemplo. Contiene las variables como columnas y las observaciones como filas.
+
+```{r}
+mtcars
+```
