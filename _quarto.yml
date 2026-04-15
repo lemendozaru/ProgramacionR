@@ -12,6 +12,7 @@ book:
     - matrices.qmd
     - factores.qmd
     - marcos.qmd
+    - listas.qmd
     - references.qmd
 
 bibliography: references.bib
