@@ -1,1 +1,67 @@
 # Las listas
+
+Una lista permite almacenar diversos objetos de manera ordenada. Estos objetos pueden no tener relación entre sí y pueden ser matrices, vectores, marcos de datos e incluso otras listas.
+
+## Creando una lista
+
+Primero vamos a crear los objetos que almacenaremos en la lista: un vector, una matriz y un marco de datos.
+
+```{r}
+# Vector con 10 números
+mi_vector <- 1:10
+
+# Matriz del 1 al 9
+mi_matriz <- matrix(1:9, ncol = 3)
+
+# Marco con los primeros objetos de otro
+mi_df <- mtcars[1:10,]
+```
+
+Y ahora sí creamos nuestra lista:
+
+```{r}
+# Creamos una lista
+mi_lista <- list(mi_vector, mi_matriz, mi_df)
+# Imprimimos
+mi_lista
+```
+
+Parece no ser muy clara la manera en la que se nos muestran los elementos de nuestra lista. Para resolverlo, podemos incluir sus nombres.
+
+```{r}
+# Asignar nombres a los objetos de una lista
+names(mi_lista) <- c("Vector", "Matriz", "Marco de Datos")
+# Imprimimos
+mi_lista
+```
+
+## Accediendo a los objetos
+
+Si deseamos extraer un objeto de la lista podemos utilizar corchetes dobles: `[[]]`. Por ejemplo, seleccionemos solo la matriz (es el segundo elemento):
+
+```{r}
+# Seleccionamos el segundo objeto
+mi_lista[[2]]
+```
+
+Aunque también funciona utilizar el nombre de dicho objeto:
+
+```{r}
+# Seleccionamos el vector por su nombre
+mi_lista[["Vector"]]
+# También funciona si
+mi_lista$Vector
+```
+
+Y si deseamos acceder al tercer elemento del vector podemos utilizar la siguiente nomenclatura:
+
+```{r}
+# Accedemos al tercer elemento del vector
+mi_lista[["Vector"]][3]
+# O también
+mi_lista$Vector[3]
+```
+
+
+
+

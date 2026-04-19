@@ -13,6 +13,7 @@ book:
     - factores.qmd
     - marcos.qmd
     - listas.qmd
+    - condicionales.qmd
     - references.qmd
 
 bibliography: references.bib
