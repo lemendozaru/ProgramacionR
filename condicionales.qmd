@@ -1,3 +1,34 @@
 # Condicionales y flujo de control
 
-En R.
+## Operadores relacionales
+
+La forma más básica de comparación es la igualdad. Comparemos unos enunciados para verificar si son o no iguales:
+
+```{r}
+# Comparando lógicas
+TRUE == FALSE
+
+# Comparando numéricos
+-6 * 14 != 17 - 101
+
+# Comparando textos
+"Usuario" == "usuario"
+
+# Comparando un lógico con un número
+TRUE == 1
+```
+
+Otros operadores son las desigualdades:
+
+```{r}
+# Comparando más números
+-6 * 5 + 2 >=  -10 + 1
+
+# Comparando más textos
+"lloviendo" <= "lloviendo perros"
+
+# Comparando lógicas
+TRUE > FALSE
+```
+
+
