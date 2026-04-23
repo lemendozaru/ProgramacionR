@@ -31,4 +31,102 @@ Otros operadores son las desigualdades:
 TRUE > FALSE
 ```
 
+### Comparando vectores
+
+Los operadores relacionales también funcionan con vectores en R:
+
+Consideremos las visitas diarias a nuestro perfil en dos redes sociales:
+
+```{r}
+# Visitas en linkedin
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+# Visitas en facebook
+facebook <- c(17, 7, 5, 16, 8, 13, 14)
+```
+
+Respondamos de manera lógica a las siguientes preguntas:
+
+- ¿En qué días se superaron las 15 visitas a linkedin?
+
+- ¿Cuándo se visitó menos de 5 veces nuestro perfil de linkedin?
+
+- ¿Cuándo se visitó más nuestro linkedin que nuestro facebook?
+
+```{r}
+# Más de 15 vistas en linkedin
+linkedin > 15
+# Menos de 5 vistas en linkedin
+linkedin < 5
+# Linkedin más visto que facebook
+linkedin > facebook
+```
+
+### Comparando matrices
+
+Se realiza de la misma manera que antes. Crearemos una matriz con los vectores anteriores:
+
+```{r}
+vistas <- matrix(c(linkedin, facebook), nrow = 2, byrow = T)
+vistas
+```
+
+Ahora respondamos a las siguientes preguntas:
+
+- ¿Cuándo tuvimos 13 vistas?
+- ¿En cuáles días tuvimos 14 o menos vistas?
+
+```{r}
+vistas == 13
+vistas <= 14
+```
+
+## Operadores lógicos
+
+Tenemos tres operadores disponibles:
+
+- Operador AND `&`
+- Operador OR `|`
+- Operador NOT `!`
+
+Consideremos únicamente el último valor del vector de vistas de linkedin.
+
+```{r}
+# Último valor de linkedin
+final <- tail(linkedin, 1)
+final
+```
+
+Respondamos las siguientes preguntas:
+
+- El último día, ¿está por debajo de 5 o por encima de 10?
+- ¿Está entre 15 y 20, excluyendo 15 pero incluyendo 20?
+
+```{r}
+5 < final | final > 10
+15 < final & final >= 20
+```
+
+Se utiliza la misma dinámica con las matrices. Tomemos la que ya hemos creado y respondamos más preguntas:
+
+- ¿Cuándo fueron las vistas de LinkedIn más de 10 y las vistas de Facebook no llegaron a 10 un día concreto?
+- ¿Cuándo se visitó tu perfil de LinkedIn o tu perfil de Facebook (o los dos) al menos 12 veces?
+- ¿Cuándo es igual la matriz a un número entre 11 y 14, excluyendo 11 e incluyendo 14?
+
+```{r}
+linkedin > 10 & facebook < 10
+linkedin > 12 | facebook > 12
+11 < vistas & 14 <= vistas
+```
+Por último, tenemos el operador que niega un valor lógico: `!`. ¿Qué devolvería el conjunto de expresiones de R indicado a continuación?
+
+```{r}
+x <- 5
+y <- 7
+
+!(!(x < 4)) & !!!(y > 12)
+```
+
+## Declaraciones condicionales
+
+
 
