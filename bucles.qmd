@@ -1,0 +1,19 @@
+# Bucles en R
+
+## El bucle `while`
+
+Es un ciclo que puede dar ciertos problemas ya que la condición indicada siempre debe volverse falsa en algún momento. Si no, el bucle será indefinido.
+
+Vamos a programar un bucle que vaya disminuyendo el valor de una variable que llamaremos `velocidad` con un `64` almacenado en ella hasta que alcance un `30`.
+
+```{r}
+velocidad <- 64
+
+# Bucle while
+while (velocidad > 30) {
+    print("Frena")
+    velocidad <- velocidad - 7
+}
+
+velocidad
+```
