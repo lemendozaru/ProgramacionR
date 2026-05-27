@@ -14,6 +14,7 @@ book:
     - marcos.qmd
     - listas.qmd
     - condicionales.qmd
+    - bucles.qmd
     - references.qmd
 
 bibliography: references.bib

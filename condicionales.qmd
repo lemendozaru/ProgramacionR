@@ -128,5 +128,38 @@ y <- 7
 
 ## Declaraciones condicionales
 
+### La sentencia `if`
 
+Veamos un ejemplo para conocer la sintaxis de esta sentencia:
 
+```{r}
+num_vistas <- 14
+
+if (num_vistas > 12) {
+    print("Eres popular")
+}
+```
+
+Si la condición no se cumple, podemos agregar al código una acción. Esto se consigue con una sentencia `else`. Probemos agregándola al anterior `if`:
+
+```{r}
+if (num_vistas > 15) {
+    print("Eres popular")
+} else {
+    print("Trata de ser más visible")
+}
+```
+
+Tengamos en cuenta que solo puede haber un `else` para cada `if`. Si deseamos agregar más condicionales, podemos echar mano de tantos `else if` como necesitemos:
+
+```{r}
+if (num_vistas > 15) {
+    print("Eres popular")
+} else if (num_vistas <= 15 & num_vistas > 10) {
+    print("Vistas promedio")
+} else {
+    print("Trata de ser más visible")
+}
+```
+
+Cabe mencionar que dentro de un `if` podemos incluir otro con su respectivo `else`.
